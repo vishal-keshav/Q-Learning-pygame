@@ -1,6 +1,42 @@
 import os
 import pygame as pg
 
+"""Utility functons"""
+def maxim(a,b):
+    if a > b:
+        return a
+    else:
+        return b
+
+def minim(a,b):
+    if a < b:
+        return a
+    else:
+        return b
+
+
+"""Event handler"""
+def handle_event(event, pg, x, y):
+    if event.type == pg.KEYDOWN:
+        if event.key == pg.K_LEFT:
+            x = x - 50
+        if event.key == pg.K_RIGHT:
+            x = x + 50
+        if event.key == pg.K_UP:
+            y = y - 50
+        if event.key == pg.K_DOWN:
+            y = y + 50
+    if event.type == pg.MOUSEMOTION:
+        (x,y) = event.pos
+        (x,y) = (x-50,y-50)
+
+    #check if object does not cross boundry
+    x = maxim(x,0)
+    x = minim(x,500)
+    y = maxim(y,0)
+    y = minim(y,500)
+    return (x,y)
+        
 
 """Draw function"""
 def draw(obj,disp,x_pos,y_pos):
@@ -36,11 +72,14 @@ while not abort:
         if event.type == pg.QUIT:
             abort = True
         #print(event)
+        """Handling differnet events"""
+        (ball_x,ball_y) = handle_event(event,pg,ball_x,ball_y)
+        
     #update the game window, set fps
     disp.fill(bg_color)
     draw(ball_image,disp,ball_x,ball_y)
     pg.display.update()
-    clk.tick(15)
+    clk.tick(30)
 
 """ We have come out of game logic loop"""
 pg.quit()
