@@ -1,6 +1,6 @@
 import os
 import pygame as pg
-
+from text_log import *
 """Utility functons"""
 def maxim(a,b):
     if a > b:
@@ -77,6 +77,8 @@ while not abort:
         
     #update the game window, set fps
     disp.fill(bg_color)
+    log = "pos_x: " + str(ball_x) + ", pos_y: " + str(ball_y) 
+    display_msg(log, pg, disp)
     draw(ball_image,disp,ball_x,ball_y)
     pg.display.update()
     clk.tick(30)
