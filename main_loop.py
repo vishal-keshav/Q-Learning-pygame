@@ -19,31 +19,37 @@ def start_game():
                 abort = True
             #print(event)
             """Handling differnet events"""
-            (b_x,b_y) = handle_event(event,pg,b_x,b_y)
-            
+            #(b_x,b_y) = handle_event(event,pg,b_x,b_y)
+        
         disp.fill(bg_color)
         
-        if y > 3:
-            y = 0
-            x = random.randrange(0,4)
-            ball_type = random.randrange(0,2)
+        
         
         draw(neutral_ball,disp,pos_x[b_x],pos_y[b_y])
         if collision(b_x, b_y, x, y):
             if ball_type == 0:
                 points = points - 1
-                #print(points)
+                print(points)
             elif ball_type == 1:
                 points = points + 1
-                #print(points)
+                print(points)
             
         elif ball_type == 0:
             draw(negative_ball,disp,pos_x[x],pos_y[y])
         elif ball_type == 1:
             draw(positive_ball,disp,pos_x[x],pos_y[y])
+            
+        (b_x,b_y) = handle_event_agent(ball_type,x,y,b_x)
+        
         y = y+1
+        
+        if y > 3:
+            y = 0
+            x = random.randrange(0,4)
+            ball_type = random.randrange(0,2)
+
         pg.display.update()
-        clk.tick(4)
+        clk.tick(6)
 
 """Define end game"""
 def end_game():
