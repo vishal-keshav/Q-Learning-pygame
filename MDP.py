@@ -43,7 +43,7 @@ def learn():
     state_value = np.zeros((2,4,4,4))
     action_value = np.ones((2,4,4,4))
     states = generate_states()
-    actions = [-1,0,1]
+    actions = [0,-1,1]
 
     #Control the iteration from variable
     for i in range(0,iteration):
