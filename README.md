@@ -14,10 +14,12 @@ Play by yourself:
 https://www.python.org/download/releases/2.7/
 2. Install pygame module
 http://www.pygame.org/download.shtml
-3. Run module testing_main.py
+3. Install numpy
+https://sourceforge.net/projects/numpy/
+4. Run module testing_main.py
 
 Watch bot getting trained while it plays the game
-3. Run module main.py
+4. Run module main.py
 
 Future scope:
 Add complexity in the game and reward system
